@@ -7,5 +7,5 @@ import java.util.LinkedHashMap;
 @Service
 public interface ManagementService {
 
-    public ResponseEntity<?> requestService(LinkedHashMap<String, Object> request);
+    public void requestService(LinkedHashMap<String, Object> request);
 }
