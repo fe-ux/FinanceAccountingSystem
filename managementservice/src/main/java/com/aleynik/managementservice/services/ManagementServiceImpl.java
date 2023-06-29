@@ -15,8 +15,8 @@ public class ManagementServiceImpl implements ManagementService {
     public void requestService(LinkedHashMap<String, Object> request) {
         if (request.get("delete") != null && ((boolean) request.get("delete"))) {
             repositoryService.deleteFinancialTransaction(request);
-
         }
+
         if (request.get("add") != null && ((boolean) request.get("add"))) {
             repositoryService.addFinancialTransaction(request);
         }

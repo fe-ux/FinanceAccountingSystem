@@ -15,7 +15,7 @@ public class Controller {
 
     private ManagementService managementService;
 
-    @PostMapping("/financialtransaction")
+    @PostMapping("/financial_transaction")
     public ResponseEntity<Void> addFinancialTransaction(@RequestBody LinkedHashMap<String, Object> request) {
         managementService.requestService(request);
         return ResponseEntity.noContent().build();
