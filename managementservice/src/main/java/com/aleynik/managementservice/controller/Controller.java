@@ -1,7 +1,7 @@
 package com.aleynik.managementservice.controller;
 
-import com.aleynik.managementservice.dto.TransactionRequest;
-import com.aleynik.managementservice.dto.TransactionResponse;
+import com.aleynik.managementservice.dto.FinancialTransactionRequest;
+import com.aleynik.managementservice.entity.FinancialTransaction;
 import com.aleynik.managementservice.services.ManagementService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,8 +17,7 @@ public class Controller {
     private ManagementService managementService;
 
     @PostMapping("/financial_transaction")
-    public ResponseEntity<TransactionResponse> addFinancialTransaction(@RequestBody TransactionRequest request) {
-        managementService.add(request);
+    public ResponseEntity<FinancialTransaction> addFinancialTransaction(@RequestBody FinancialTransactionRequest request) {
         return ResponseEntity.ok(managementService.add(request));
     }
 
@@ -29,7 +28,7 @@ public class Controller {
     }
 
     @GetMapping("/financial_transaction")
-    public ResponseEntity<List<TransactionResponse>> getAll() {
+    public ResponseEntity<List<FinancialTransaction>> getAll() {
        return ResponseEntity.ok(managementService.get());
     }
 

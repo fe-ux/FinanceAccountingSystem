@@ -1,14 +1,16 @@
 package com.aleynik.managementservice.services;
 
-import com.aleynik.managementservice.dto.TransactionRequest;
-import org.springframework.http.ResponseEntity;
+import com.aleynik.managementservice.dto.FinancialTransactionRequest;
+import com.aleynik.managementservice.entity.FinancialTransaction;
 
-import java.util.LinkedHashMap;
+import java.util.List;
 
 public interface RepositoryService {
 
-    public ResponseEntity<?> addFinancialTransaction(LinkedHashMap<String, Object> request);
+    FinancialTransaction addFinancialTransaction(FinancialTransactionRequest request);
 
     void deleteFinancialTransaction(Long id);
-    void deleteFinancialTransaction(TransactionRequest request);
+
+    List<FinancialTransaction> getAllTransaction();
+
 }
