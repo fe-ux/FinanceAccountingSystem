@@ -1,5 +1,6 @@
 package com.aleynik.managementservice.services;
 
+import com.aleynik.managementservice.dto.TransactionRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,14 +12,11 @@ public class ManagementServiceImpl implements ManagementService {
 
     private RepositoryService repositoryService;
 
-    @Override
-    public void requestService(LinkedHashMap<String, Object> request) {
-        if (request.get("delete") != null && ((boolean) request.get("delete"))) {
-            repositoryService.deleteFinancialTransaction(request);
-        }
+    public TransactionRequest add(TransactionRequest request) {
+        return repositoryService.addFinancialTransaction(request);
+    }
 
-        if (request.get("add") != null && ((boolean) request.get("add"))) {
-            repositoryService.addFinancialTransaction(request);
-        }
+    public void delete(Long id) {
+        repositoryService.deleteFinancialTransaction(id);
     }
 }

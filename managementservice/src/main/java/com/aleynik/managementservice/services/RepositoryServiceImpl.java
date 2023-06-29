@@ -1,5 +1,6 @@
 package com.aleynik.managementservice.services;
 
+import com.aleynik.managementservice.dto.TransactionRequest;
 import com.aleynik.managementservice.entity.FinancialTransaction;
 import com.aleynik.managementservice.exceptions.DeleteFinancialTransactionException;
 import com.aleynik.managementservice.repository.FinancialTransactionsRepository;
@@ -64,11 +65,11 @@ public class RepositoryServiceImpl implements RepositoryService {
     }
 
     @Override
-    public void deleteFinancialTransaction(LinkedHashMap<String, Object> request) {
-        if (request.get("id") == null)
+    public void deleteFinancialTransaction(Long id) {
+        if (id == null)
             throw new DeleteFinancialTransactionException("Request don't have id");
         try {
-            financialTransactionsRepository.deleteById(Long.valueOf(request.get("id").toString()));
+            financialTransactionsRepository.deleteById(id);
         } catch (IllegalArgumentException exception) {
             throw new DeleteFinancialTransactionException("Bad id");
         }
