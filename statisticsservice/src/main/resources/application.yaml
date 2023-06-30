@@ -1,0 +1,17 @@
+server:
+  port: 8091
+spring:
+  application:
+    name: FinancialTransactionStatisticsService
+    version: 1.0.0
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    username: postgres
+    password: projectdb
+    url: jdbc:postgresql://localhost:5432/financialtransactionsdb

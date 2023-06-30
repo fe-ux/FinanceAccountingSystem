@@ -15,6 +15,10 @@ public class FinancialTransactionStatisticResponse {
 
     private BigDecimal allSum;
 
+    private BigDecimal expensesSum;
+
+    private BigDecimal incomeSum;
+
     private List<FinancialTransaction> financialTransactionList;
 
     public void sortData(){
