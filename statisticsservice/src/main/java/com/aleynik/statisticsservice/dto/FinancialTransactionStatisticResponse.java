@@ -6,6 +6,7 @@ import com.aleynik.statisticsservice.entity.comparators.SumFinancialTransactionC
 import lombok.Data;
 
 import java.math.BigDecimal;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -24,6 +25,9 @@ public class FinancialTransactionStatisticResponse {
     public void sortSum(){
         SumFinancialTransactionComparator comparator = new SumFinancialTransactionComparator();
         financialTransactionList.sort(comparator);
-        System.out.println(financialTransactionList);
+    }
+
+    public void reverse(){
+        Collections.reverse(financialTransactionList);
     }
 }

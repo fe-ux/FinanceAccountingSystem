@@ -1,9 +1,10 @@
 package com.aleynik.managementservice.exceptions;
 
-public class GetAllFinancialTransactionException extends RuntimeException {
-    public String massage;
+import net.bytebuddy.implementation.bind.annotation.Super;
 
-    public GetAllFinancialTransactionException(Exception exception) {
-        this.massage = "GET ALL FINANCIAL TRANSACTION ETERNAL EXCEPTION = " + exception.toString();
+public class GetAllFinancialTransactionException extends RuntimeException {
+
+    public GetAllFinancialTransactionException(String massage) {
+        super(massage);
     }
 }

@@ -27,15 +27,15 @@ public class RepositoryServiceImpl implements RepositoryService {
         FinancialTransaction financialTransaction = new FinancialTransaction();
 
         if (request.getAccount() == null)
-            throw new AddFinancialTransactionException("BAD ACCOUNT | REQUEST = ", request);
+            throw new AddFinancialTransactionException("BAD ACCOUNT | REQUEST = " + request.toString());
         financialTransaction.setAccount(request.getAccount());
 
         if  ((request.getSum() == null) || (request.getSum().compareTo(new BigDecimal(0)) < 0))
-            throw new AddFinancialTransactionException("BAD SUM | REQUEST = ", request);
+            throw new AddFinancialTransactionException("BAD SUM | REQUEST = " + request.toString());
         financialTransaction.setSum(request.getSum());
 
         if (request.getType() == null)
-            throw new AddFinancialTransactionException("BAD TYPE | REQUEST = ", request);
+            throw new AddFinancialTransactionException("BAD TYPE | REQUEST = " + request.toString());
         financialTransaction.setType(request.getType());
 
 
@@ -43,13 +43,13 @@ public class RepositoryServiceImpl implements RepositoryService {
         financialTransaction.setDate(Date.from(Instant.now()));
         if (request.getDescription() != null)
             if(request.getDescription().length() > 100)
-                throw new AddFinancialTransactionException("BAD DESCRIPTION | REQUEST = ",request);
+                throw new AddFinancialTransactionException("BAD DESCRIPTION | REQUEST = " + request.toString());
         financialTransaction.setDescription(request.getDescription());
 
         try {
             financialTransactionsRepository.save(financialTransaction);
         } catch (Exception exception) {
-            throw new AddFinancialTransactionException("ETERNAL EXCEPTION | REQUEST = ", request, exception);
+            throw new AddFinancialTransactionException("ETERNAL EXCEPTION | REQUEST = " + request.toString() + " | EXCEPTION = " + exception.toString());
         }
 
         return financialTransaction;
@@ -71,7 +71,7 @@ public class RepositoryServiceImpl implements RepositoryService {
         try {
             return financialTransactionsRepository.findAll();
         } catch (Exception exception) {
-            throw new GetAllFinancialTransactionException(exception);
+            throw new GetAllFinancialTransactionException("GET ALL FINANCIAL TRANSACTION ETERNAL EXCEPTION = " + exception.toString());
         }
     }
 
