@@ -8,7 +8,7 @@ import java.util.UUID;
 @Data
 public class FinancialTransactionRequest {
 
-    private UUID id_user;
+    private UUID account;
 
     private BigDecimal sum;
 

@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
@@ -25,15 +26,13 @@ public class RepositoryServiceImpl implements RepositoryService {
 
         FinancialTransaction financialTransaction = new FinancialTransaction();
 
-        if (request.getId_user() == null)
-            throw new AddFinancialTransactionException("BAD ID_USER | REQUEST = ", request);
-        financialTransaction.setId_user(request.getId_user());
+        if (request.getAccount() == null)
+            throw new AddFinancialTransactionException("BAD ACCOUNT | REQUEST = ", request);
+        financialTransaction.setAccount(request.getAccount());
 
-
-        if (request.getSum() == null || request.getSum().longValue() <= 0)
+        if  ((request.getSum() == null) || (request.getSum().compareTo(new BigDecimal(0)) < 0))
             throw new AddFinancialTransactionException("BAD SUM | REQUEST = ", request);
         financialTransaction.setSum(request.getSum());
-
 
         if (request.getType() == null)
             throw new AddFinancialTransactionException("BAD TYPE | REQUEST = ", request);
@@ -42,6 +41,9 @@ public class RepositoryServiceImpl implements RepositoryService {
 
         financialTransaction.setId(financialTransactionsRepository.count() + 1L);
         financialTransaction.setDate(Date.from(Instant.now()));
+        if (request.getDescription() != null)
+            if(request.getDescription().length() > 100)
+                throw new AddFinancialTransactionException("BAD DESCRIPTION | REQUEST = ",request);
         financialTransaction.setDescription(request.getDescription());
 
         try {

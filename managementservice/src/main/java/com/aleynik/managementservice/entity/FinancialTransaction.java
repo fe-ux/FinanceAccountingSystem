@@ -15,9 +15,10 @@ public class FinancialTransaction {
     @Column(name = "id", updatable = false, nullable = false)
     private Long id;
 
-    @Column(name = "id_user", updatable = false, nullable = false)
-    private UUID id_user;
+    @Column(name = "account", updatable = false, nullable = false)
+    private UUID account;
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "date", updatable = false, nullable = false)
     private Date date;
 
