@@ -3,6 +3,7 @@ package com.aleynik.managementservice.services;
 import com.aleynik.managementservice.dto.FinancialTransactionRequest;
 import com.aleynik.managementservice.entity.FinancialTransaction;
 import lombok.AllArgsConstructor;
+import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

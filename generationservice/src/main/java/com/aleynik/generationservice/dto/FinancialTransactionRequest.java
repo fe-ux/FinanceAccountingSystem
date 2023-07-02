@@ -1,4 +1,4 @@
-package com.aleynik.managementservice.dto;
+package com.aleynik.generationservice.dto;
 
 import lombok.Builder;
 import lombok.Data;

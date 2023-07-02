@@ -15,7 +15,7 @@ public class RepositoryServiceImpl implements RepositoryService {
 
     private FinancialTransactionsRepository financialTransactionsRepository;
 
-    public List<FinancialTransaction> getFinancialTransaction(FinancialTransactionStatisticRequest request) {
+    public List<FinancialTransaction> getFinancialTransactions(FinancialTransactionStatisticRequest request) {
         try {
             if (request.getFrom() != null) {
                 if (request.getTo() != null)

@@ -6,5 +6,5 @@ import com.aleynik.statisticsservice.entity.FinancialTransaction;
 import java.util.List;
 
 public interface RepositoryService {
-    List<FinancialTransaction> getFinancialTransaction(FinancialTransactionStatisticRequest request);
+    List<FinancialTransaction> getFinancialTransactions(FinancialTransactionStatisticRequest request);
 }

@@ -18,7 +18,7 @@ public class StatisticsServiceImpl implements StatisticsService {
 
         FinancialTransactionStatisticResponse response = new FinancialTransactionStatisticResponse();
 
-        response.setFinancialTransactionList(repositoryService.getFinancialTransaction(request));
+        response.setFinancialTransactionList(repositoryService.getFinancialTransactions(request));
 
         if (request.getFilter() != null) {
             switch (request.getFilter()) {
