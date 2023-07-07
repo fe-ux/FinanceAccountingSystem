@@ -19,7 +19,8 @@ public class Account {
 
     String mail;
 
+    String login;
+
     String password;
 
-    Boolean notification;
 }

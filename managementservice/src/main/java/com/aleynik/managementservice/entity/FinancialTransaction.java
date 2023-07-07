@@ -14,7 +14,7 @@ import java.util.UUID;
 @Entity(name = "financial_transaction")
 public class FinancialTransaction {
     @Id
-    @Column(name = "id", updatable = false, nullable = false)
+    @Column(name = "id", updatable = false, nullable = false, unique = true)
     private Long id;
 
     @Column(name = "account", updatable = false, nullable = false)

@@ -16,12 +16,13 @@ public class GeneratorRandomImpl implements GeneratorRandom{
 
     public Account generationAccount(UUID uuid){
         return Account.builder()
+                .id(uuid)
                 .mail(randomString(10) + "@mymail.ru")
+                .login(randomString(15))
                 .password(randomString(15))
                 .firstname(randomString(7))
                 .lastname(randomString(10))
                 .surname(randomString(10))
-                .notification(false)
                 .build();
     }
 
