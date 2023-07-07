@@ -1,18 +1,11 @@
 package com.aleynik.notificationservice.services.impl;
 
 import com.aleynik.notificationservice.entity.Notification;
-import com.aleynik.notificationservice.exceptions.AddFinancialTransactionException;
-import com.aleynik.notificationservice.exceptions.DeleteFinancialTransactionException;
-import com.aleynik.notificationservice.exceptions.GetAllFinancialTransactionException;
 import com.aleynik.notificationservice.repository.NotificationServiceRepository;
 import com.aleynik.notificationservice.services.RepositoryService;
 import lombok.AllArgsConstructor;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
