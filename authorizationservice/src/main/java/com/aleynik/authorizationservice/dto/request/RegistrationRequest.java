@@ -1,7 +1,6 @@
 package com.aleynik.authorizationservice.dto.request;
 
 import lombok.Data;
-import lombok.Getter;
 
 import javax.validation.constraints.*;
 
