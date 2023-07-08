@@ -2,11 +2,9 @@ server:
   port: 8084
 
 spring:
-
   application:
     name: FinancialTransactionManagementService
     version: 1.0.0
-
   jpa:
     hibernate:
       ddl-auto: none
@@ -14,15 +12,15 @@ spring:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
-
+        jdbc:
+          lob:
+            non_contextual_creation: true
   datasource:
     username: postgres
     password: projectdb
-    url: jdbc:postgresql://localhost:5432/accountdb
+    url: jdbc:postgresql://localhost:5432/usersdb
 
-
-app:
-  jwt:
-    secret: abcdefghijklmnOPQRSTUVWXYZ
-  jwttoken:
-    message: 'Login Successful'
+authapp:
+  app:
+    jwtExpirationMs: 86400000
+    jwtSecret: qwertyuiopASDFGHJKLzxcvbnmQWERTYUIOPqqqqqgVVHGVHGHGVGH

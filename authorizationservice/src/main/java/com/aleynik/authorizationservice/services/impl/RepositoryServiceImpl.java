@@ -1,16 +1,12 @@
 package com.aleynik.authorizationservice.services.impl;
 
-import com.aleynik.authorizationservice.entity.Account;
-import com.aleynik.authorizationservice.entity.Role;
+import com.aleynik.authorizationservice.entity.User;
 import com.aleynik.authorizationservice.exceptions.DeleteAccountException;
 import com.aleynik.authorizationservice.exceptions.GetAllAccountException;
-import com.aleynik.authorizationservice.exceptions.RegistrationAccountException;
-import com.aleynik.authorizationservice.repository.AccountRepository;
+import com.aleynik.authorizationservice.repository.UserRepository;
 import com.aleynik.authorizationservice.repository.RoleRepository;
 import com.aleynik.authorizationservice.services.RepositoryService;
 import lombok.AllArgsConstructor;
-import org.springframework.dao.EmptyResultDataAccessException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -20,44 +16,35 @@ import java.util.UUID;
 @Service
 public class RepositoryServiceImpl implements RepositoryService {
 
-    private AccountRepository accountRepository;
+    private UserRepository userRepository;
     private RoleRepository roleRepository;
 
-    public Account Registration(Account request) {
-        Role role = new Role("ROLE_ADMIN");
-        request.setPassword(new BCryptPasswordEncoder().encode(request.getPassword()));
-        request.addRole(role);
-        try {
-            accountRepository.save(request);
-        }
-        catch (Exception exception){
-            throw new RegistrationAccountException("REGISTRATION ACCOUNT ETERNAL EXCEPTION = " + exception);
-        }
+    public User Registration(User request) {
         return request;
     }
 
 
     public void deleteAccount(UUID id) {
         try {
-            accountRepository.deleteById(id);
+            userRepository.deleteById(id);
         } catch (Exception exception) {
             throw new DeleteAccountException("DELETE ACCOUNT ETERNAL EXCEPTION = " + exception);
         }
     }
 
-    public Optional<Account> findByLogin(String login) {
-        Optional<Account> account;
+    public Optional<User> findByUsername(String username) {
+        Optional<User> account;
         try {
-            account = accountRepository.findByLogin(login);
+            account = userRepository.findByUsername(username);
         } catch (Exception exception) {
         throw new GetAllAccountException("GET ALL ACCOUNT ETERNAL EXCEPTION = " + exception);
         }
         return account;
     }
 
-    public List<Account> getAllAccount() {
+    public List<User> getAllAccount() {
         try {
-            return accountRepository.findAll();
+            return userRepository.findAll();
         } catch (Exception exception) {
             throw new GetAllAccountException("GET ALL ACCOUNT ETERNAL EXCEPTION = " + exception);
         }

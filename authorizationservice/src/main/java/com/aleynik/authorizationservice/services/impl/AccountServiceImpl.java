@@ -1,6 +1,6 @@
 package com.aleynik.authorizationservice.services.impl;
 
-import com.aleynik.authorizationservice.entity.Account;
+import com.aleynik.authorizationservice.entity.User;
 import com.aleynik.authorizationservice.exceptions.RegistrationAccountException;
 import com.aleynik.authorizationservice.services.AccountService;
 import com.aleynik.authorizationservice.services.RepositoryService;
@@ -17,18 +17,18 @@ public class AccountServiceImpl implements AccountService {
 
     private RepositoryService repositoryService;
 
-    public Account add(Account request) {
+    public User add(User request) {
         String patPassword = "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9@#$%!]).{8,}";
         String patMail = "(?=.*[@.]).{4,}";
         if(!request.getPassword().matches(patPassword)
-                || !request.getMail().matches(patMail)
+                || !request.getEmail().matches(patMail)
         ) throw new RegistrationAccountException("BAD REGISTRATION REQUEST = "+request);
         return repositoryService.Registration(request);
     }
 
 
-    public Account findByLogin(String login) {
-        Optional<Account> account = repositoryService.findByLogin(login);
+    public User findByLogin(String username) {
+        Optional<User> account = repositoryService.findByUsername(username);
         if (account.isEmpty()) throw new RuntimeException();
         return account.get();
     }
@@ -37,7 +37,7 @@ public class AccountServiceImpl implements AccountService {
         repositoryService.deleteAccount(id);
     }
 
-    public List<Account> get() {
+    public List<User> get() {
         return repositoryService.getAllAccount();
     }
 }
