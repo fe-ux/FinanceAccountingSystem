@@ -1,6 +1,8 @@
 package com.aleynik.notificationservice.services.impl;
 
+import com.aleynik.notificationservice.dto.NotificationRequest;
 import com.aleynik.notificationservice.entity.Notification;
+import com.aleynik.notificationservice.exceptions.SetNotificationException;
 import com.aleynik.notificationservice.repository.NotificationServiceRepository;
 import com.aleynik.notificationservice.services.RepositoryService;
 import lombok.AllArgsConstructor;
@@ -17,27 +19,18 @@ public class RepositoryServiceImpl implements RepositoryService {
     private NotificationServiceRepository notificationServiceRepository;
 
 
-    public Notification setNotification(Notification request) {
-        try {
-            notificationServiceRepository.save(request);
-        }
-        catch (Exception exception) {
-            throw new RuntimeException();
-        }
+    public NotificationRequest setNotification(NotificationRequest request, UUID id) {
+        Notification notification = Notification.builder().id(id).mail(request.getMail()).status(request.getStatus()).build();
+        notificationServiceRepository.save(notification);
         return request;
     }
 
     public Optional<Notification> checkNotification(UUID id) {
         Optional<Notification> notification;
-        try {
-            if(notificationServiceRepository.findById(id).isPresent()){
+        if(notificationServiceRepository.findById(id).isPresent()){
                 notification = notificationServiceRepository.findById(id);
-            }
-            else return null;
         }
-        catch (Exception exception){
-            throw new RuntimeException();
-        }
+        else return null;
         return notification;
     }
 

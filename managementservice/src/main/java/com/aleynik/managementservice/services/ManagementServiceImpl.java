@@ -5,12 +5,11 @@ import com.aleynik.managementservice.entity.FinancialTransaction;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.annotation.EnableKafka;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @AllArgsConstructor
 @Service
@@ -20,8 +19,8 @@ public class ManagementServiceImpl implements ManagementService {
 
     private RepositoryService repositoryService;
 
-    public FinancialTransaction add(FinancialTransactionRequest request) {
-        FinancialTransaction financialTransaction = repositoryService.addFinancialTransaction(request);
+    public FinancialTransaction add(FinancialTransactionRequest request, UUID id) {
+        FinancialTransaction financialTransaction = repositoryService.addFinancialTransaction(request, id);
         Gson gson = new GsonBuilder().setDateFormat("MMM dd, yyyy HH:mm:ss").create();
         kafkaTemplateNotification.send(
                 "notification",

@@ -1,5 +1,6 @@
 package com.aleynik.authorizationservice.services;
 
+import com.aleynik.authorizationservice.dto.request.RegistrationRequest;
 import com.aleynik.authorizationservice.entity.User;
 
 import java.util.List;
@@ -8,12 +9,13 @@ import java.util.UUID;
 
 public interface RepositoryService {
 
-    User Registration(User request);
+    void registration(RegistrationRequest registrationRequest);
 
-    void deleteAccount(UUID id);
+    void generation(User user);
 
-    Optional<User> findByUsername(String login);
 
-    List<User> getAllAccount();
+    Optional<User> findByUsername(String username);
+
+    List<User> getAllUsers();
 
 }

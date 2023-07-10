@@ -1,4 +1,5 @@
 package com.aleynik.notificationservice.entity;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
@@ -6,6 +7,7 @@ import java.util.UUID;
 
 @Setter
 @Getter
+@Builder
 @Entity(name = "notification")
 public class Notification {
     @Id
