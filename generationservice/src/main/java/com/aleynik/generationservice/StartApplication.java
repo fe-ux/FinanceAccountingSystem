@@ -13,7 +13,7 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
         HibernateJpaAutoConfiguration.class
 })
 public class StartApplication {
-
+    //TODO
     public static void main(String[] args) {
         SpringApplication.run(StartApplication.class, args);
     }

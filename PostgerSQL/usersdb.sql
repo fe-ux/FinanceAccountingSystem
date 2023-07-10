@@ -7,14 +7,6 @@ CREATE TABLE users(
 	username varchar(20) NOT NULL,
 	password varchar(150) NOT NULL
 );
-CREATE TABLE roles(
-id int PRIMARY KEY,
-name varchar(20) NOT NULL UNIQUE
+CREATE TABLE admins(
+id UUID REFERENCES users (id)
 );
-CREATE TABLE user_roles(
-user_id UUID REFERENCES users (id),
-role_id int REFERENCES roles (id)
-);
-INSERT INTO roles(id, name) VALUES(0, 'ROLE_USER');
-INSERT INTO roles(id, name) VALUES(1, 'ROLE_MODERATOR');
-INSERT INTO roles(id, name) VALUES(2, 'ROLE_ADMIN');
