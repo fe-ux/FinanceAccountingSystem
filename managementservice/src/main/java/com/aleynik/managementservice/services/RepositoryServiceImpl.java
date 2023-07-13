@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @AllArgsConstructor
 @Service
@@ -22,16 +23,16 @@ public class RepositoryServiceImpl implements RepositoryService {
     private FinancialTransactionsRepository financialTransactionsRepository;
 
     @Override
-    public FinancialTransaction addFinancialTransaction(FinancialTransactionRequest request) {
+    public FinancialTransaction addFinancialTransaction(FinancialTransactionRequest request, UUID id) {
 
         FinancialTransaction financialTransaction = new FinancialTransaction();
 
-        if (request.getAccount() == null)
+        if (id == null)
             throw new AddFinancialTransactionException("BAD ACCOUNT | REQUEST = " + request);
-        financialTransaction.setAccount(request.getAccount());
+        financialTransaction.setAccount(id);
 
         if  ((request.getSum() == null) || (request.getSum().compareTo(new BigDecimal(0)) < 0) ||
-                (financialTransactionsRepository.findAllByAccount(request.getAccount())
+                (financialTransactionsRepository.findAllByAccount(id)
                 .stream()
                 .map(e -> e.getSum().multiply(new BigDecimal(e.getType() ? 1: -1)))
                 .reduce(BigDecimal.ZERO,BigDecimal::add)

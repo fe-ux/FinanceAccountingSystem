@@ -20,7 +20,7 @@ public class Controller {
     }
 
     @PutMapping("/generation")
-    public ResponseEntity<String> setStatus(@Param("status") Boolean status) {
+    public ResponseEntity<String> setStatus(@RequestParam("status") Boolean status) {
         return ResponseEntity.ok(generationService.status(status));
     }
 

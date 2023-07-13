@@ -10,8 +10,6 @@ import java.util.UUID;
 @Builder
 public class FinancialTransactionRequest {
 
-    private UUID account;
-
     private BigDecimal sum;
 
     private String description;

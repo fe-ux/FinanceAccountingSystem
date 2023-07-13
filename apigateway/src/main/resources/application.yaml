@@ -1,0 +1,23 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: management-service
+          uri: lb://MANAGEMENT-SERVICE
+          predicates:
+            - Path=/transactions/**
+          filters:
+            - AuthenticationFilter
+
+        - id: authorization-service
+          uri: lb://AUTHORIZATION-SERVICE
+          predicates:
+            - Path=/auth/**
+
+  application:
+    name: SWIGGY-GATEWAY
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/

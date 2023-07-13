@@ -2,8 +2,7 @@ server:
   port: 8081
 spring:
   application:
-    name: FinancialTransactionManagementService
-    version: 1.0.0
+    name: MANAGEMENT-SERVICE
   jpa:
     hibernate:
       ddl-auto: update
@@ -15,3 +14,13 @@ spring:
     username: postgres
     password: projectdb
     url: jdbc:postgresql://localhost:5432/financialtransactionsdb
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/
+
+thisapp:
+  app:
+    jwtSecret: qwertyuiopASDFGHJKLzxcvbnmQWERTYUIOPqqqqqgVVHGVHGHGVGH
+    jwtExpirationMs: 86400000
