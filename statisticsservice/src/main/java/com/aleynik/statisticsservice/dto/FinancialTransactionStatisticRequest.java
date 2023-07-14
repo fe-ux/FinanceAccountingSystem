@@ -8,8 +8,6 @@ import java.util.UUID;
 @Data
 public class FinancialTransactionStatisticRequest {
 
-    private UUID account;
-
     private String filter;
 
     private Date from;

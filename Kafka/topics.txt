@@ -1,17 +1,3 @@
-./bin/kafka-topics.sh \
---bootstrap-server localhost:9092\
-  --create \
---topic generationtransactions \
-  --config "retention.ms=3000" \
-  --config "cleanup.policy=delete"
-
-./bin/kafka-topics.sh \
---bootstrap-server localhost:9092\
-  --create \
---topic generationaccounts \
-  --config "retention.ms=3000" \
-  --config "cleanup.policy=delete"
-  
  ./bin/kafka-topics.sh \
 --bootstrap-server localhost:9092\
   --create \

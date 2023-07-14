@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 @AllArgsConstructor
 @Service
@@ -14,11 +15,11 @@ public class StatisticsServiceImpl implements StatisticsService {
 
     private RepositoryService repositoryService;
 
-    public FinancialTransactionStatisticResponse get(FinancialTransactionStatisticRequest request) {
+    public FinancialTransactionStatisticResponse get(FinancialTransactionStatisticRequest request, UUID id) {
 
         FinancialTransactionStatisticResponse response = new FinancialTransactionStatisticResponse();
 
-        response.setFinancialTransactionList(repositoryService.getFinancialTransactions(request));
+        response.setFinancialTransactionList(repositoryService.getFinancialTransactions(request, id));
 
         if (request.getFilter() != null) {
             switch (request.getFilter()) {

@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @AllArgsConstructor
 @Service
@@ -15,17 +16,17 @@ public class RepositoryServiceImpl implements RepositoryService {
 
     private FinancialTransactionsRepository financialTransactionsRepository;
 
-    public List<FinancialTransaction> getFinancialTransactions(FinancialTransactionStatisticRequest request) {
+    public List<FinancialTransaction> getFinancialTransactions(FinancialTransactionStatisticRequest request, UUID id) {
         try {
             if (request.getFrom() != null) {
                 if (request.getTo() != null)
-                    return financialTransactionsRepository.findAllByDateBetweenAndAccount(request.getFrom(), request.getTo(), request.getAccount());
+                    return financialTransactionsRepository.findAllByDateBetweenAndAccount(request.getFrom(), request.getTo(), id);
                 else
-                    return financialTransactionsRepository.findAllByDateAfterAndAccount(request.getFrom(), request.getAccount());
+                    return financialTransactionsRepository.findAllByDateAfterAndAccount(request.getFrom(), id);
             }
             if (request.getTo() != null)
-                return financialTransactionsRepository.findAllByDateBeforeAndAccount(request.getTo(), request.getAccount());
-            return financialTransactionsRepository.findAllByAccount(request.getAccount());
+                return financialTransactionsRepository.findAllByDateBeforeAndAccount(request.getTo(), id);
+            return financialTransactionsRepository.findAllByAccount(id);
         }
         catch (Exception exception){
             throw new DataStatisticsException("BAD DATA | EXCEPTION = " + exception + " | REQUEST = " + request.toString());

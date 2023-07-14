@@ -1,3 +1,5 @@
+server:
+  port: 8081
 spring:
   cloud:
     gateway:
@@ -15,7 +17,7 @@ spring:
             - Path=/auth/**
 
   application:
-    name: SWIGGY-GATEWAY
+    name: API-GATEWAY
 
 eureka:
   client:
