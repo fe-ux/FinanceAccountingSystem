@@ -8,7 +8,7 @@ Finance Accounting System
     .
     ├── PostgerSQL                  # Files for initial database
     ├── Kafka                       # Files for create Kafka topics
-    ├── LogsSchemes                 # The scheme of the project device and service verification reports
+    ├── Scheme                      # The scheme of the project device and service verification reports
     ├── managementservice           # Microservice for adding/deleting/receiving financial transactions
     ├── statisticsservice           # Microservice can view the statistics of its expenses and income 
     │                                 for a certain period, as well as receive the total amount of expenses and income.
@@ -21,3 +21,6 @@ Finance Accounting System
     ├── notificationservice         # Microservice sends a notification on a transaction
     │                               
     └── README.md
+
+### Scheme
+![plot](./Sheme/Scheme_of_project.png)
